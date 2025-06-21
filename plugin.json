@@ -1,9 +1,9 @@
 {
-    "id": "com.mattermost.plugin-starter-template",
-    "name": "Plugin Starter Template",
-    "description": "This plugin serves as a starting point for writing a Mattermost plugin.",
-    "homepage_url": "https://github.com/mattermost/mattermost-plugin-starter-template",
-    "support_url": "https://github.com/mattermost/mattermost-plugin-starter-template/issues",
+    "id": "com.mattermost.use-default-theme",
+    "name": "Use Default Theme",
+    "description": "Apply a custom theme to all users when they create their account.",
+    "homepage_url": "https://github.com/phederal/mattermost-plugin-use-theme",
+    "support_url": "https://github.com/phederal/mattermost-plugin-use-theme/issues",
     "icon_path": "assets/starter-template-icon.svg",
     "min_server_version": "6.2.1",
     "server": {
@@ -21,6 +21,14 @@
     "settings_schema": {
         "header": "",
         "footer": "",
-        "settings": []
+        "settings": [
+            {
+                "key": "UseCustomTheme",
+                "display_name": "Use Default Theme",
+                "type": "longtext",
+                "help_text": "Use Custom Theme JSON",
+                "default": ""
+            }
+        ]
     }
 }
