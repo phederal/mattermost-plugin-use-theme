@@ -1,15 +1,10 @@
 package main
 
 import (
-	"net/http"
 	"sync"
-	"time"
 
 	"github.com/mattermost/mattermost/server/public/model"
 	"github.com/mattermost/mattermost/server/public/plugin"
-	"github.com/mattermost/mattermost/server/public/pluginapi"
-	"github.com/mattermost/mattermost/server/public/pluginapi/cluster"
-	"github.com/pkg/errors"
 )
 
 type Plugin struct {
@@ -31,11 +26,14 @@ func (p *Plugin) UserHasBeenCreated(c *plugin.Context, user *model.User) {
 	pref := model.Preference{
 		UserId:   user.Id,
 		Category: "theme",
-		Name:     "",
+		Name:     "custom", // Указываем имя кастомной темы
 		Value:    theme,
 	}
 	prefs := []model.Preference{pref}
-	p.API.UpdatePreferencesForUser(user.Id, prefs)
+
+	if appErr := p.API.UpdatePreferencesForUser(user.Id, prefs); appErr != nil {
+		p.API.LogError("Failed to set custom theme for user", "user_id", user.Id, "error", appErr.Error())
+	}
 }
 
 // See https://developers.mattermost.com/extend/plugins/server/reference/
