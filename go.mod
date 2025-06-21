@@ -1,4 +1,4 @@
-module github.com/mattermost/mattermost-plugin-starter-template
+module github.com/phederal/mattermost-plugin-use-theme
 
 go 1.22.0
 

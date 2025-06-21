@@ -1,13 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"sync"
 	"time"
 
-	"github.com/mattermost/mattermost-plugin-starter-template/server/command"
-	"github.com/mattermost/mattermost-plugin-starter-template/server/store/kvstore"
 	"github.com/mattermost/mattermost/server/public/model"
 	"github.com/mattermost/mattermost/server/public/plugin"
 	"github.com/mattermost/mattermost/server/public/pluginapi"
@@ -33,7 +30,7 @@ func (p *Plugin) UserHasBeenCreated(c *plugin.Context, user *model.User) {
 
 	pref := model.Preference{
 		UserId:   user.Id,
-		Category: model.PREFERENCE_CATEGORY_THEME,
+		Category: "theme",
 		Name:     "",
 		Value:    theme,
 	}
